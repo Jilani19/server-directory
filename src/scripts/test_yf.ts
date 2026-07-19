@@ -1,14 +1,20 @@
-import yahooFinance from "yahoo-finance2";
+import YahooFinance from "yahoo-finance2";
 
 async function run() {
-  const searchResult = await yahooFinance.search("Amgen");
-  console.log("Search Result:", searchResult.quotes.length > 0 ? searchResult.quotes[0] : "No quotes");
-  
-  if (searchResult.quotes.length > 0) {
-    const ticker = searchResult.quotes[0].symbol;
-    const quote = await yahooFinance.quoteSummary(ticker, { modules: ["price", "summaryProfile", "financialData", "defaultKeyStatistics"] });
-    console.log("Website:", quote.summaryProfile?.website);
-    console.log("Industry:", quote.summaryProfile?.industry);
+  const yf = new YahooFinance();
+  // Search for Amgen
+  const searchResult = await yf.search("Amgen");
+  const firstQuote = searchResult?.quotes?.[0];
+  console.log("Search Result:", firstQuote ? firstQuote : "No quotes");
+
+  if (firstQuote) {
+    const ticker = (firstQuote as any).symbol as string;
+    const quote = await yf.quoteSummary(ticker, {
+      modules: ["price", "summaryProfile", "financialData", "defaultKeyStatistics"],
+    });
+    console.log("Website:", quote?.summaryProfile?.website ?? "—");
+    console.log("Industry:", quote?.summaryProfile?.industry ?? "—");
   }
 }
+
 run().catch(console.error);
