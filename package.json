@@ -4,18 +4,15 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "lint": "eslint .",
-    "sync:all": "tsx src/sync/sync-all.ts",
     "prisma:generate": "prisma generate",
     "migrate:deploy": "prisma migrate deploy",
     "postinstall": "prisma generate",
     "prestart": "npm run migrate:deploy && npm run seed",
-    "seed": "tsx src/scripts/seed-registry.ts",
-  },
+    "seed": "tsx src/scripts/seed-registry.ts"
+  }
   "keywords": [],
   "author": "",
   "license": "ISC",
