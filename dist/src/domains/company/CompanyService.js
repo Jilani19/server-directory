@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompanyService = void 0;
 const BaseService_1 = require("../../core/BaseService");
+const AppError_1 = require("../../utils/AppError");
 class CompanyService extends BaseService_1.BaseService {
     repo;
     constructor(repo) {
@@ -77,16 +78,22 @@ class CompanyService extends BaseService_1.BaseService {
                 take: limit,
                 orderBy,
                 include: {
-                    drugRelations: true,
-                    trialRelations: true,
-                    drugs: true,
-                    clinicalTrials: true,
-                    facilities: true,
-                    executives: true,
-                    publications: true,
-                    patents: true,
-                    news: true,
-                    documents: true
+                    categories: true,
+                    country: true,
+                    facilities: { where: { type: "HQ" }, take: 1 },
+                    _count: {
+                        select: {
+                            drugRelations: true,
+                            trialRelations: true,
+                            products: true,
+                            facilities: true,
+                            executives: true,
+                            publications: true,
+                            patents: true,
+                            news: true,
+                            relationships: true
+                        }
+                    }
                 }
             }),
             this.repo.count({ where })
@@ -110,7 +117,7 @@ class CompanyService extends BaseService_1.BaseService {
     async getCompanyBySlug(slug) {
         const company = await this.repo.getBySlug(slug);
         if (!company)
-            throw new Error('Company not found');
+            throw new AppError_1.AppError(404, 'COMPANY_NOT_FOUND', 'Company not found');
         return company;
     }
 }

@@ -43,26 +43,38 @@ class CompanyRepository extends BaseRepository_1.BaseRepository {
         return categories.map(c => c.status).filter(Boolean);
     }
     async getBySlug(slug) {
-        return this.prisma.company.findUnique({
+        const company = await this.prisma.company.findUnique({
             where: { slug },
             include: {
-                facilities: { where: { type: "HQ" } },
+                // Include ALL facilities so frontend can compute unique countries
+                facilities: true,
                 _count: {
                     select: {
-                        drugs: true,
-                        clinicalTrials: true,
-                        facilities: true,
-                        executives: true,
-                        publications: true,
-                        patents: true,
-                        news: true,
-                        documents: true,
-                        regulatoryActions: true,
-                        relationships: true
+                        products: true, // Product table — matches Products tab
+                        clinicalTrials: true, // CompanyClinicalTrial table — matches Clinical Trials tab
+                        pipelineAssets: true, // CompanyPipelineAsset table — matches Pipeline tab
+                        executives: true, // CompanyExecutive — matches Leadership tab
+                        facilities: true, // CompanyFacility — matches Facilities tab
+                        publications: true, // CompanyPublication — matches Publications tab
+                        patents: true, // CompanyPatent — matches Patents tab
+                        news: true, // CompanyNews — matches News tab
+                        documents: true, // CompanyDocument — matches Documents tab
+                        regulatoryActions: true, // CompanyRegulatoryAction — matches Regulatory tab
+                        relationships: true, // CompanyRelationship — matches Relationships tab
+                        contacts: true, // CompanyContact — matches Contacts tab
                     }
                 }
             }
         });
+        if (!company)
+            return null;
+        // Compute unique countries from all facilities
+        const facilityCountries = [...new Set(company.facilities.map((f) => f.country).filter(Boolean))];
+        return {
+            ...company,
+            _facilityCountries: facilityCountries,
+            _countriesCount: facilityCountries.length,
+        };
     }
 }
 exports.CompanyRepository = CompanyRepository;

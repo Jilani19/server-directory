@@ -25,4 +25,6 @@ router.get("/:slug/documents", controller.getDocuments.bind(controller));
 router.get("/:slug/downloads", controller.getDownloads.bind(controller));
 router.get("/:slug/timeline", controller.getTimeline.bind(controller));
 router.get("/:slug/ai-insights", controller.getAiInsights.bind(controller));
+router.get("/:slug/contacts", controller.getContacts.bind(controller));
+router.get("/:slug/pipeline", controller.getPipeline.bind(controller));
 exports.default = router;
