@@ -3,7 +3,6 @@ import { env } from "./config/env";
 
 import fs from "fs";
 import path from "path";
-import sqlite3 from "sqlite3";
 
 const dbPath = path.resolve("prisma/dev.db");
 
@@ -42,53 +41,12 @@ try {
   const stat = fs.statSync(dbPath);
   console.log("Database Size:", stat.size, "bytes");
 } catch (err) {
-  console.error("❌ Unable to read file stats");
+  console.error("❌ Unable to read database stats");
   console.error(err);
 }
 
-console.log("------------------------------------------------");
-console.log("SQLite Direct Test");
-console.log("------------------------------------------------");
+console.log("================================================");
 
-const sqlite = new sqlite3.Database(dbPath, (err) => {
-  if (err) {
-    console.error("❌ SQLite OPEN FAILED");
-    console.error(err);
-  } else {
-    console.log("✅ SQLite OPEN SUCCESS");
-
-    sqlite.all(
-      "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name",
-      [],
-      (queryErr, rows: any[]) => {
-        if (queryErr) {
-          console.error("❌ SQLite QUERY FAILED");
-          console.error(queryErr);
-        } else {
-          console.log(`✅ Total Tables: ${rows.length}`);
-
-          rows.forEach((row) => {
-            console.log(" -", row.name);
-          });
-        }
-
-        sqlite.close((closeErr) => {
-          if (closeErr) {
-            console.error("❌ SQLite CLOSE FAILED");
-            console.error(closeErr);
-          } else {
-            console.log("✅ SQLite CLOSED");
-          }
-
-          console.log("------------------------------------------------");
-          console.log("Starting Express Server...");
-          console.log("------------------------------------------------");
-
-          app.listen(env.PORT, () => {
-            console.log(`✅ Server running on port ${env.PORT}`);
-          });
-        });
-      }
-    );
-  }
+app.listen(env.PORT, () => {
+  console.log(`✅ Server running on port ${env.PORT}`);
 });
