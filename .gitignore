@@ -6,9 +6,6 @@ node_modules
 # Prisma generated files
 /generated/prisma
 
-# Ignore SQLite database
-prisma/dev.db
-*.db
 
 # Build output
 dist/
