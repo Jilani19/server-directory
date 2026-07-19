@@ -1,0 +1,322 @@
+[
+  {
+    "apiName": "Wikidata",
+    "endpoint": "https://query.wikidata.org/sparql",
+    "type": "SPARQL",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.089Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "Wikipedia",
+    "endpoint": "https://en.wikipedia.org/w/api.php",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.090Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "GLEIF",
+    "endpoint": "https://api.gleif.org/api/v1/lei-records",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.090Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "SEC EDGAR",
+    "endpoint": "https://data.sec.gov/submissions/",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.090Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "SEC Company Facts",
+    "endpoint": "https://data.sec.gov/api/xbrl/companyfacts/",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.090Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "ClinicalTrials.gov",
+    "endpoint": "https://clinicaltrials.gov/api/v2/studies",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.090Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "WHO ICTRP",
+    "endpoint": "https://trialsearch.who.int/",
+    "type": "SOAP/HTML",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "OpenFDA",
+    "endpoint": "https://api.fda.gov/drug/label.json",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "FDA Enforcement",
+    "endpoint": "https://api.fda.gov/drug/enforcement.json",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "FDA Establishment",
+    "endpoint": "https://api.fda.gov/drug/ndc.json",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "DailyMed",
+    "endpoint": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls.json",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "RxNorm",
+    "endpoint": "https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui.json",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "PubChem",
+    "endpoint": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "ChEMBL",
+    "endpoint": "https://www.ebi.ac.uk/chembl/api/data/molecule",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "Open Targets",
+    "endpoint": "https://api.platform.opentargets.org/api/v4/graphql",
+    "type": "GraphQL",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "PubMed",
+    "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "Europe PMC",
+    "endpoint": "https://www.ebi.ac.uk/europepmc/webservices/rest/search",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "OpenAlex",
+    "endpoint": "https://api.openalex.org/works",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "CrossRef",
+    "endpoint": "https://api.crossref.org/works",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "ORCID",
+    "endpoint": "https://pub.orcid.org/v3.0/search/",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "NIH RePORTER",
+    "endpoint": "https://api.reporter.nih.gov/v2/projects/search",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "PatentsView",
+    "endpoint": "https://api.patentsview.org/patents/query",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "Google Patents",
+    "endpoint": "https://patents.google.com/",
+    "type": "HTML/Scraping",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "EPO OPS",
+    "endpoint": "https://ops.epo.org/3.2/rest-services/published-data/search",
+    "type": "REST",
+    "requiresAuth": true,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "ROR",
+    "endpoint": "https://api.ror.org/organizations",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "REST Countries",
+    "endpoint": "https://restcountries.com/v3.1/all",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "GeoNames",
+    "endpoint": "http://api.geonames.org/searchJSON",
+    "type": "REST",
+    "requiresAuth": true,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "Nominatim",
+    "endpoint": "https://nominatim.openstreetmap.org/search",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "Yahoo Finance",
+    "endpoint": "https://query1.finance.yahoo.com/v10/finance/quoteSummary/",
+    "type": "REST",
+    "requiresAuth": false,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "Alpha Vantage",
+    "endpoint": "https://www.alphavantage.co/query",
+    "type": "REST",
+    "requiresAuth": true,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "Financial Modeling Prep",
+    "endpoint": "https://financialmodelingprep.com/api/v3/profile/",
+    "type": "REST",
+    "requiresAuth": true,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  },
+  {
+    "apiName": "OpenCorporates",
+    "endpoint": "https://api.opencorporates.com/v0.4/companies/search",
+    "type": "REST",
+    "requiresAuth": true,
+    "status": 200,
+    "lastValidated": "2026-07-14T14:23:53.091Z",
+    "verified": true,
+    "confidence": 100
+  }
+]

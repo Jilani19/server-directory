@@ -1,0 +1,229 @@
+// schema_v4_proposed.prisma
+// Life Sciences Intelligence Platform V4
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// -----------------------------------------
+// FOUNDATION: Provenance & Versioning
+// -----------------------------------------
+model Provenance {
+  id               String   @id @default(uuid())
+  entityId         String
+  entityType       String
+  sourceName       String
+  sourceUrl        String
+  retrievedAt      DateTime @default(now())
+  updatedAt        DateTime?
+  connectorName    String
+  connectorVersion String
+  confidenceScore  Float
+  checksum         String?
+  version          Int      @default(1)
+
+  @@index([entityId, entityType])
+}
+
+model EntityHistory {
+  id           String   @id @default(uuid())
+  entityId     String
+  entityType   String
+  fieldName    String
+  oldValue     String?
+  newValue     String?
+  changedAt    DateTime @default(now())
+  provenanceId String?
+
+  @@index([entityId, entityType])
+}
+
+// -----------------------------------------
+// DICTIONARIES (3NF)
+// -----------------------------------------
+model Country {
+  id         String     @id @default(uuid())
+  code       String     @unique // ISO Alpha-2
+  name       String     @unique
+  facilities Facility[]
+}
+
+model TherapeuticArea {
+  id      String   @id @default(uuid())
+  name    String   @unique
+  drugs   Drug[]
+  trials  ClinicalTrial[]
+}
+
+// -----------------------------------------
+// CORE: Identity
+// -----------------------------------------
+model Company {
+  id          String   @id @default(uuid())
+  legalName   String
+  brandName   String?
+  slug        String   @unique
+  description String?
+  mission     String?
+  foundedYear Int?
+  companyType String?  // PUBLIC / PRIVATE
+  status      String   @default("ACTIVE")
+  
+  lei         String?  @unique
+  cik         String?  @unique
+  ticker      String?
+  isin        String?  @unique
+  naics       String?
+  
+  website     String?
+  phone       String?
+  corporateEmail String?
+
+  // Sync Tracking
+  lastSynced  DateTime?
+  nextSync    DateTime?
+  syncStatus  String?
+
+  facilities      Facility[]
+  drugs           Drug[]
+  trials          ClinicalTrial[]
+  financials      FinancialStatement[]
+  patents         Patent[]
+  publications    Publication[]
+  leadership      LeadershipRole[]
+  
+  sourceRelations CompanyRelationship[] @relation("SourceCompany")
+  targetRelations CompanyRelationship[] @relation("TargetCompany")
+
+  @@index([status])
+}
+
+model LeadershipRole {
+  id          String   @id @default(uuid())
+  companyId   String
+  executiveId String
+  title       String
+  startDate   DateTime?
+  endDate     DateTime?
+  isCurrent   Boolean  @default(true)
+  
+  company     Company  @relation(fields: [companyId], references: [id])
+  executive   Executive @relation(fields: [executiveId], references: [id])
+}
+
+model Executive {
+  id        String   @id @default(uuid())
+  name      String
+  biography String?
+  roles     LeadershipRole[]
+}
+
+// -----------------------------------------
+// CORE: Financials & Facilities
+// -----------------------------------------
+model FinancialStatement {
+  id              String   @id @default(uuid())
+  companyId       String
+  company         Company  @relation(fields: [companyId], references: [id])
+  fiscalYear      Int
+  currency        String
+  revenue         Float?
+  netIncome       Float?
+  ebitda          Float?
+  rdSpend         Float?
+  employees       Int?
+  
+  @@unique([companyId, fiscalYear])
+}
+
+model Facility {
+  id        String   @id @default(uuid())
+  companyId String
+  company   Company  @relation(fields: [companyId], references: [id])
+  name      String
+  type      String
+  address   String?
+  city      String?
+  countryId String?
+  country   Country? @relation(fields: [countryId], references: [id])
+  latitude  Float?
+  longitude Float?
+  status    String   @default("ACTIVE")
+}
+
+// -----------------------------------------
+// CORE: Science & R&D
+// -----------------------------------------
+model Drug {
+  id               String   @id @default(uuid())
+  companyId        String
+  company          Company  @relation(fields: [companyId], references: [id])
+  tradeName        String
+  genericName      String
+  approvalStatus   String
+  mechanismOfAction String?
+  routeOfAdmin     String?
+  atcCode          String?
+  patentExpiry     DateTime?
+  
+  therapeuticAreas TherapeuticArea[]
+  trials           ClinicalTrial[]
+}
+
+model ClinicalTrial {
+  id          String   @id @default(uuid())
+  nctId       String   @unique
+  companyId   String
+  company     Company  @relation(fields: [companyId], references: [id])
+  title       String
+  phase       String?
+  status      String
+  enrollment  Int?
+  startDate   DateTime?
+  completionDate DateTime?
+
+  drugs            Drug[]
+  therapeuticAreas TherapeuticArea[]
+}
+
+// -----------------------------------------
+// INTELLECTUAL PROPERTY & PUBS
+// -----------------------------------------
+model Patent {
+  id           String   @id @default(uuid())
+  patentNumber String   @unique
+  companyId    String
+  company      Company  @relation(fields: [companyId], references: [id])
+  title        String
+  filingDate   DateTime?
+  expiryDate   DateTime?
+  status       String
+}
+
+model Publication {
+  id          String   @id @default(uuid())
+  doi         String   @unique
+  companyId   String
+  company     Company  @relation(fields: [companyId], references: [id])
+  title       String
+  journal     String?
+  publishDate DateTime?
+}
+
+// -----------------------------------------
+// RELATIONSHIPS
+// -----------------------------------------
+model CompanyRelationship {
+  id              String   @id @default(uuid())
+  type            String   // ACQUISITION, SUBSIDIARY, PARTNERSHIP
+  sourceCompanyId String
+  targetCompanyId String
+  
+  sourceCompany   Company  @relation(name: "SourceCompany", fields: [sourceCompanyId], references: [id])
+  targetCompany   Company  @relation(name: "TargetCompany", fields: [targetCompanyId], references: [id])
+}

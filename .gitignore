@@ -1,0 +1,14 @@
+node_modules
+
+# Keep environment variables out of version control
+.env
+
+# Prisma generated files
+/generated/prisma
+
+# Ignore SQLite database
+prisma/dev.db
+*.db
+
+# Build output
+dist/

@@ -1,0 +1,74 @@
+{
+  "AbbVie": {
+    "counts": {
+      "products": 93,
+      "clinicalTrials": 1490,
+      "publications": 0,
+      "patents": 0,
+      "news": 0,
+      "facilities": 0
+    },
+    "hasFinancials": false,
+    "hasCorporate": false
+  },
+  "Merck": {
+    "counts": {
+      "products": 111,
+      "clinicalTrials": 5900,
+      "publications": 0,
+      "patents": 0,
+      "news": 0,
+      "facilities": 0
+    },
+    "hasFinancials": false,
+    "hasCorporate": false
+  },
+  "Novartis": {
+    "counts": {
+      "products": 136,
+      "clinicalTrials": 5452,
+      "publications": 0,
+      "patents": 0,
+      "news": 0,
+      "facilities": 0
+    },
+    "hasFinancials": false,
+    "hasCorporate": false
+  },
+  "Pfizer": {
+    "counts": {
+      "products": 288,
+      "clinicalTrials": 6522,
+      "publications": 0,
+      "patents": 0,
+      "news": 0,
+      "facilities": 0
+    },
+    "hasFinancials": false,
+    "hasCorporate": false
+  },
+  "Roche": {
+    "counts": {
+      "products": 2,
+      "clinicalTrials": 4285,
+      "publications": 0,
+      "patents": 0,
+      "news": 0,
+      "facilities": 0
+    },
+    "hasFinancials": false,
+    "hasCorporate": false
+  },
+  "Sanofi": {
+    "counts": {
+      "products": 111,
+      "clinicalTrials": 3769,
+      "publications": 0,
+      "patents": 0,
+      "news": 0,
+      "facilities": 0
+    },
+    "hasFinancials": false,
+    "hasCorporate": false
+  }
+}

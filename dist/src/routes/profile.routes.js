@@ -1,0 +1,28 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const ProfileController_1 = require("../controllers/ProfileController");
+const router = (0, express_1.Router)();
+const controller = new ProfileController_1.ProfileController();
+// Granular Profile Endpoints
+router.get("/:slug/overview", controller.getOverview.bind(controller));
+router.get("/:slug/corporate", controller.getCorporate.bind(controller));
+router.get("/:slug/leadership", controller.getLeadership.bind(controller));
+router.get("/:slug/products", controller.getProducts.bind(controller));
+router.get("/:slug/clinical-trials", controller.getClinicalTrials.bind(controller));
+router.get("/:slug/therapeutic-areas", controller.getTherapeuticAreas.bind(controller));
+router.get("/:slug/research", controller.getResearch.bind(controller));
+router.get("/:slug/manufacturing", controller.getManufacturing.bind(controller));
+router.get("/:slug/regulatory", controller.getRegulatory.bind(controller));
+router.get("/:slug/publications", controller.getPublications.bind(controller));
+router.get("/:slug/patents", controller.getPatents.bind(controller));
+router.get("/:slug/financials", controller.getFinancials.bind(controller));
+router.get("/:slug/partnerships", controller.getPartnerships.bind(controller));
+router.get("/:slug/acquisitions", controller.getAcquisitions.bind(controller));
+router.get("/:slug/competitors", controller.getCompetitors.bind(controller));
+router.get("/:slug/news", controller.getNews.bind(controller));
+router.get("/:slug/documents", controller.getDocuments.bind(controller));
+router.get("/:slug/downloads", controller.getDownloads.bind(controller));
+router.get("/:slug/timeline", controller.getTimeline.bind(controller));
+router.get("/:slug/ai-insights", controller.getAiInsights.bind(controller));
+exports.default = router;

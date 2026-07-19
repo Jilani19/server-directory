@@ -1,0 +1,32 @@
+{
+  "abbvie": {
+    "products": 20,
+    "trials": 10,
+    "news": 0
+  },
+  "pfizer": {
+    "products": 20,
+    "trials": 10,
+    "news": 0
+  },
+  "merck": {
+    "products": 20,
+    "trials": 10,
+    "news": 0
+  },
+  "novartis": {
+    "products": 20,
+    "trials": 10,
+    "news": 0
+  },
+  "roche": {
+    "products": 2,
+    "trials": 10,
+    "news": 0
+  },
+  "sanofi": {
+    "products": 20,
+    "trials": 10,
+    "news": 0
+  }
+}

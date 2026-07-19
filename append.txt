@@ -1,0 +1,20 @@
+
+model CompanyRelationship {
+  id String @id @default(uuid())
+  type String
+  sourceCompanyId String
+  targetCompanyId String
+  confidenceScore Float @default(100.0)
+  createdAt DateTime @default(now())
+  sourceCompany Company @relation(name: "SourceCompany", fields: [sourceCompanyId], references: [id], onDelete: Cascade)
+  targetCompany Company @relation(name: "TargetCompany", fields: [targetCompanyId], references: [id], onDelete: Cascade)
+}
+
+model AuditLog {
+  id String @id @default(uuid())
+  adminId String
+  action String
+  entityId String
+  details String
+  createdAt DateTime @default(now())
+}
