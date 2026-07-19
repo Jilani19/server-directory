@@ -11,7 +11,10 @@
     "lint": "eslint .",
     "sync:all": "tsx src/sync/sync-all.ts",
     "prisma:generate": "prisma generate",
-    "postinstall": "prisma generate"
+    "migrate:deploy": "prisma migrate deploy",
+    "postinstall": "prisma generate",
+    "prestart": "npm run migrate:deploy && npm run seed",
+    "seed": "tsx src/scripts/seed-registry.ts",
   },
   "keywords": [],
   "author": "",
